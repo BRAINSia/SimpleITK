@@ -17,6 +17,12 @@ if(ITK_FOUND)
 
 endif()
 
+if(ITK_USE_FFTWF OR ITK_USE_FFTWD)
+  link_directories(${ITK_FFTW_LIBDIR})
+  include_directories(${ITK_FFTW_INCLUDE_PATH})
+  list(APPEND ITK_DEPENDENCIES fftw)
+endif()
+
 if( NOT ITK_USE_REVIEW )
 # TODO need to check ITK configuration to verify that it has the needed modules
 #  message(FATAL_ERROR "Please reconfigure ITK by turning ITK_USE_REVIEW ON")
